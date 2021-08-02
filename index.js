@@ -80,6 +80,13 @@ client.connect(err => {
             })
     })
 
+    app.post('/isDoctorMatch', (req, res) => {
+        const email = req.body.email;
+        doctorCollection.find({ email: email })
+            .toArray((err, doctors) => {
+                res.send(doctors.length > 0);
+            })
+    })
 
 });
 
